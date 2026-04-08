@@ -1,0 +1,75 @@
+:root {
+  /* -- Base palette -- */
+  --bg: #060810;
+  --bg-elevated: #0c0e18;
+  --bg-soft: #10131e;
+  --surface: rgba(255, 255, 255, 0.03);
+  --surface-hover: rgba(255, 255, 255, 0.06);
+
+  /* -- Text -- */
+  --text: #eef2ff;
+  --text-muted: rgba(238, 242, 255, 0.58);
+  --text-muted-strong: rgba(238, 242, 255, 0.82);
+
+  /* -- Accent colors -- */
+  --accent-blue: #4a6fff;
+  --accent-blue-soft: #c8d8ff;
+  --accent-cyan: #7ee7ff;
+  --accent-cyan-soft: #a8eeff;
+  --accent-violet: #a78bfa;
+  --accent-violet-soft: #d4c5ff;
+  --accent-lavender: #c7ccff;
+
+  /* -- Borders -- */
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --border-focus: rgba(255, 255, 255, 0.26);
+
+  /* -- Glass -- */
+  --glass-bg: rgba(10, 15, 28, 0.46);
+  --glass-bg-strong: rgba(8, 14, 28, 0.88);
+  --glass-blur: blur(26px);
+  --glass-saturate: saturate(1.25);
+  --glass-border: 1px solid var(--border-strong);
+  --glass-inset-glow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  --glass-shadow: 0 16px 44px rgba(3, 7, 20, 0.42);
+
+  /* -- Radii -- */
+  --radius-xs: 12px;
+  --radius-sm: 18px;
+  --radius-md: 22px;
+  --radius-lg: 28px;
+  --radius-xl: 34px;
+  --radius-pill: 999px;
+
+  /* -- Shadows -- */
+  --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 16px 44px rgba(3, 7, 20, 0.42);
+  --shadow-lg: 0 40px 100px rgba(0, 0, 0, 0.65), 0 0 80px rgba(0, 160, 210, 0.06);
+  --shadow-img: 0 50px 120px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.06), 0 24px 70px rgba(0, 150, 210, 0.12);
+  --shadow-button: 0 8px 28px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+
+  /* -- Spacing -- */
+  --section-gap: 92px;
+  --content-max: 1380px;
+  --content-padding: 24px;
+
+  /* -- Fonts -- */
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  --font-heading: "Space Grotesk", "Inter", -apple-system, sans-serif;
+  --font-mono: "SF Mono", "SFMono-Regular", ui-monospace, Menlo, monospace;
+
+  /* -- Transitions -- */
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 180ms;
+  --duration-slow: 300ms;
+
+  /* -- Feature card gradient -- */
+  --feature-card-bg: linear-gradient(
+    135deg,
+    rgba(0, 20, 40, 0.95) 0%,
+    rgba(5, 14, 30, 0.80) 40%,
+    rgba(6, 10, 24, 0.5) 100%
+  );
+}

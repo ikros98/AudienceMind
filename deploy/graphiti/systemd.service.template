@@ -1,0 +1,18 @@
+[Unit]
+Description=PersonaGraph Graphiti Compatibility Service
+After=network.target docker.service
+Requires=docker.service
+
+[Service]
+Type=simple
+User=paperspace
+WorkingDirectory=/opt/PersonaGraph/backend
+EnvironmentFile=/opt/personagraph-graphiti/service.env
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/opt/PersonaGraph/backend/.venv/bin/python -m uvicorn app.graphiti_service.main:app --host ${GRAPHITI_SERVICE_HOST} --port ${GRAPHITI_SERVICE_PORT}
+Restart=always
+RestartSec=5
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target

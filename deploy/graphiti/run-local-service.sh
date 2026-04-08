@@ -1,0 +1,117 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+LOCAL_ENV_FILE="$ROOT_DIR/deploy/graphiti/local.env"
+REPO_ENV_FILE="$ROOT_DIR/.env"
+
+EXTERNAL_NEO4J_URI="${NEO4J_URI:-}"
+EXTERNAL_NEO4J_USER="${NEO4J_USER:-}"
+EXTERNAL_NEO4J_PASSWORD="${NEO4J_PASSWORD:-}"
+
+mkdir -p \
+  "$ROOT_DIR/deploy/graphiti/local-data/metadata" \
+  "$ROOT_DIR/deploy/graphiti/neo4j/data" \
+  "$ROOT_DIR/deploy/graphiti/neo4j/logs" \
+  "$ROOT_DIR/deploy/graphiti/neo4j/plugins"
+
+if [[ -f "$REPO_ENV_FILE" ]]; then
+  set -a
+  source "$REPO_ENV_FILE"
+  set +a
+fi
+
+ROOT_GRAPHITI_LLM_BASE_URL="${GRAPHITI_LLM_BASE_URL:-}"
+ROOT_GRAPHITI_LLM_API_KEY="${GRAPHITI_LLM_API_KEY:-}"
+ROOT_GRAPHITI_LLM_MODEL="${GRAPHITI_LLM_MODEL:-}"
+ROOT_GRAPHITI_LLM_SMALL_MODEL="${GRAPHITI_LLM_SMALL_MODEL:-}"
+ROOT_GRAPHITI_EMBEDDER_BASE_URL="${GRAPHITI_EMBEDDER_BASE_URL:-}"
+ROOT_GRAPHITI_EMBEDDER_API_KEY="${GRAPHITI_EMBEDDER_API_KEY:-}"
+ROOT_GRAPHITI_EMBEDDING_MODEL="${GRAPHITI_EMBEDDING_MODEL:-}"
+ROOT_GRAPHITI_RERANKER_BASE_URL="${GRAPHITI_RERANKER_BASE_URL:-}"
+ROOT_GRAPHITI_RERANKER_API_KEY="${GRAPHITI_RERANKER_API_KEY:-}"
+ROOT_GRAPHITI_RERANKER_MODEL="${GRAPHITI_RERANKER_MODEL:-}"
+
+if [[ -f "$LOCAL_ENV_FILE" ]]; then
+  set -a
+  source "$LOCAL_ENV_FILE"
+  set +a
+fi
+
+export GRAPHITI_SERVICE_NAME="${GRAPHITI_SERVICE_NAME:-personagraph-graphiti-local}"
+export GRAPHITI_SERVICE_HOST="${GRAPHITI_SERVICE_HOST:-127.0.0.1}"
+export GRAPHITI_SERVICE_PORT="${GRAPHITI_SERVICE_PORT:-8182}"
+export GRAPHITI_SERVICE_LOG_LEVEL="${GRAPHITI_SERVICE_LOG_LEVEL:-INFO}"
+export GRAPHITI_SERVICE_BEARER_TOKEN="${GRAPHITI_SERVICE_BEARER_TOKEN:-${GRAPHITI_API_KEY:-}}"
+export GRAPHITI_SERVICE_DATA_DIR="${GRAPHITI_SERVICE_DATA_DIR:-$ROOT_DIR/deploy/graphiti/local-data}"
+
+export NEO4J_URI="${EXTERNAL_NEO4J_URI:-${NEO4J_URI:-bolt://127.0.0.1:7687}}"
+export NEO4J_USER="${EXTERNAL_NEO4J_USER:-${NEO4J_USER:-neo4j}}"
+export NEO4J_PASSWORD="${EXTERNAL_NEO4J_PASSWORD:-${NEO4J_PASSWORD:-personagraph-local}}"
+
+export GRAPHITI_LLM_BASE_URL="${GRAPHITI_LLM_BASE_URL:-${ROOT_GRAPHITI_LLM_BASE_URL:-${LLM_BASE_URL:-}}}"
+export GRAPHITI_LLM_API_KEY="${GRAPHITI_LLM_API_KEY:-${ROOT_GRAPHITI_LLM_API_KEY:-${LLM_API_KEY:-}}}"
+export GRAPHITI_LLM_MODEL="${GRAPHITI_LLM_MODEL:-${ROOT_GRAPHITI_LLM_MODEL:-${LLM_MODEL_NAME:-}}}"
+export GRAPHITI_LLM_SMALL_MODEL="${GRAPHITI_LLM_SMALL_MODEL:-${ROOT_GRAPHITI_LLM_SMALL_MODEL:-${GRAPHITI_LLM_MODEL:-${LLM_MODEL_NAME:-}}}}"
+export GRAPHITI_LLM_TEMPERATURE="${GRAPHITI_LLM_TEMPERATURE:-0}"
+export GRAPHITI_LLM_MAX_TOKENS="${GRAPHITI_LLM_MAX_TOKENS:-4096}"
+export GRAPHITI_LLM_FORCE_REASONING_OFF="${GRAPHITI_LLM_FORCE_REASONING_OFF:-true}"
+export GRAPHITI_LLM_REASONING_EFFORT="${GRAPHITI_LLM_REASONING_EFFORT:-${LLM_REASONING_EFFORT:-}}"
+
+export GRAPHITI_EMBEDDER_BASE_URL="${GRAPHITI_EMBEDDER_BASE_URL:-${ROOT_GRAPHITI_EMBEDDER_BASE_URL:-${GRAPHITI_LLM_BASE_URL:-}}}"
+export GRAPHITI_EMBEDDER_API_KEY="${GRAPHITI_EMBEDDER_API_KEY:-${ROOT_GRAPHITI_EMBEDDER_API_KEY:-${GRAPHITI_LLM_API_KEY:-}}}"
+export GRAPHITI_EMBEDDING_MODEL="${GRAPHITI_EMBEDDING_MODEL:-${ROOT_GRAPHITI_EMBEDDING_MODEL:-nomic-embed-text}}"
+
+export GRAPHITI_RERANKER_BASE_URL="${GRAPHITI_RERANKER_BASE_URL:-${ROOT_GRAPHITI_RERANKER_BASE_URL:-${GRAPHITI_LLM_BASE_URL:-}}}"
+export GRAPHITI_RERANKER_API_KEY="${GRAPHITI_RERANKER_API_KEY:-${ROOT_GRAPHITI_RERANKER_API_KEY:-${GRAPHITI_LLM_API_KEY:-}}}"
+export GRAPHITI_RERANKER_MODEL="${GRAPHITI_RERANKER_MODEL:-${ROOT_GRAPHITI_RERANKER_MODEL:-${GRAPHITI_LLM_SMALL_MODEL:-${GRAPHITI_LLM_MODEL:-}}}}"
+export GRAPHITI_SEARCH_RERANKER="${GRAPHITI_SEARCH_RERANKER:-rrf}"
+export GRAPHITI_MAX_PAGE_SIZE="${GRAPHITI_MAX_PAGE_SIZE:-500}"
+
+# Keep the local Graphiti service isolated from repo-wide legacy LLM variables.
+# Some lower-level Graphiti paths can still consult generic OpenAI-compatible env names.
+export LLM_BASE_URL="${GRAPHITI_LLM_BASE_URL}"
+export LLM_API_KEY="${GRAPHITI_LLM_API_KEY}"
+export LLM_MODEL_NAME="${GRAPHITI_LLM_MODEL}"
+export OPENAI_BASE_URL="${GRAPHITI_LLM_BASE_URL}"
+export OPENAI_API_BASE="${GRAPHITI_LLM_BASE_URL}"
+export OPENAI_API_KEY="${GRAPHITI_LLM_API_KEY}"
+
+if [[ -z "${GRAPHITI_SERVICE_BEARER_TOKEN}" ]]; then
+  echo "Missing Graphiti service bearer token." >&2
+  echo "Set GRAPHITI_SERVICE_BEARER_TOKEN in deploy/graphiti/local.env or GRAPHITI_API_KEY in .env." >&2
+  exit 1
+fi
+
+if [[ -z "${GRAPHITI_LLM_BASE_URL}" || -z "${GRAPHITI_LLM_API_KEY}" || -z "${GRAPHITI_LLM_MODEL}" ]]; then
+  echo "Missing Graphiti LLM configuration." >&2
+  echo "Set GRAPHITI_LLM_* in deploy/graphiti/local.env or LLM_* in .env." >&2
+  exit 1
+fi
+
+if lsof -nP -iTCP:"$GRAPHITI_SERVICE_PORT" -sTCP:LISTEN >/dev/null 2>&1; then
+  if curl -fsS "http://${GRAPHITI_SERVICE_HOST}:${GRAPHITI_SERVICE_PORT}/health" >/dev/null 2>&1; then
+    echo "Local Graphiti compatibility service is already running on ${GRAPHITI_SERVICE_HOST}:${GRAPHITI_SERVICE_PORT}."
+    exit 0
+  fi
+
+  echo "Port ${GRAPHITI_SERVICE_PORT} is already in use by another process." >&2
+  echo "Stop that process or change GRAPHITI_SERVICE_PORT in deploy/graphiti/local.env." >&2
+  exit 1
+fi
+
+echo "Starting local Graphiti compatibility service"
+echo "  service:   $GRAPHITI_SERVICE_NAME"
+echo "  host:      $GRAPHITI_SERVICE_HOST:$GRAPHITI_SERVICE_PORT"
+echo "  data dir:  $GRAPHITI_SERVICE_DATA_DIR"
+echo "  neo4j:     $NEO4J_URI"
+echo "  llm url:   $GRAPHITI_LLM_BASE_URL"
+echo "  llm model: $GRAPHITI_LLM_MODEL"
+echo "  embedder:  $GRAPHITI_EMBEDDER_BASE_URL :: $GRAPHITI_EMBEDDING_MODEL"
+
+cd "$ROOT_DIR/backend"
+exec uv run \
+  --with-requirements ../deploy/graphiti/requirements.txt \
+  uvicorn app.graphiti_service.main:app \
+  --host "$GRAPHITI_SERVICE_HOST" \
+  --port "$GRAPHITI_SERVICE_PORT"

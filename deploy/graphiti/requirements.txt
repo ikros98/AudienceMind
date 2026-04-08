@@ -1,0 +1,7 @@
+flask>=3.0,<4
+flask-cors>=6.0,<7
+fastapi>=0.115,<1
+uvicorn[standard]>=0.34,<1
+graphiti-core>=0.28,<0.29
+openai>=1.69,<2
+python-dotenv>=1.0,<2

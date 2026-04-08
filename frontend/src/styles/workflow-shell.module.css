@@ -1,0 +1,82 @@
+.shell {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+/* -- Top Bar -------------------------------------- */
+.topBar {
+  position: relative;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.5rem;
+  flex-shrink: 0;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation));
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.topBarLeft {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  text-decoration: none;
+}
+
+.topBarRight {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* -- Body ----------------------------------------- */
+.body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+/* -- Graph Panel (left) --------------------------- */
+.graphPanel {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  border-right: 1px solid var(--glass-border);
+  transition: width var(--transition-normal);
+  overflow: hidden;
+}
+.graphPanel.hidden { width: 0; border: none; }
+.graphPanel.full   { width: 100%; border: none; }
+
+/* -- Content Panel (right) ------------------------ */
+.contentPanel {
+  flex: 1;
+  height: 100%;
+  overflow-y: auto;
+  padding: 1.5rem;
+  transition: width var(--transition-normal);
+}
+.contentPanel::-webkit-scrollbar { width: 6px; }
+.contentPanel::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.12);
+  border-radius: 3px;
+}
+.contentPanel.full { width: 100%; }
+
+/* -- Responsive ----------------------------------- */
+@media (max-width: 768px) {
+  .graphPanel { display: none; }
+  .contentPanel { width: 100%; padding: 1rem; }
+}

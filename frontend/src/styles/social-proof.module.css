@@ -1,0 +1,66 @@
+/* -- Social proof badge strip -- */
+
+.section {
+  padding: 40px 0;
+}
+
+.inner {
+  width: min(1000px, calc(100% - var(--content-padding) * 2));
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* -- Badge -- */
+
+.badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  opacity: 0.5;
+  transition: opacity var(--duration-normal) var(--ease-default);
+}
+
+.badge:hover {
+  opacity: 0.8;
+}
+
+/* -- Icon -- */
+
+.icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+/* -- Label -- */
+
+.label {
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+/* -- Responsive -- */
+
+@media (max-width: 600px) {
+  .inner {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px 20px;
+    justify-items: center;
+  }
+}

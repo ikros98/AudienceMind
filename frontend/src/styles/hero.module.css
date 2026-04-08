@@ -1,0 +1,78 @@
+.hero {
+  position: relative;
+  min-height: max(100vh, 700px);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.canvasWrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Override FluidGlass wrapper sizing */
+.canvasWrap :global(.hero-canvas-wrapper) {
+  width: 100%;
+  height: 100%;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 25vh;
+  padding-inline: var(--content-padding);
+  max-width: 920px;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 14px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+}
+
+.heading {
+  font-size: clamp(42px, 6vw, 82px);
+  color: var(--text);
+  letter-spacing: -0.055em;
+  max-width: 920px;
+  line-height: 0.96;
+}
+
+.subheading {
+  margin-top: 18px;
+  font-size: 20px;
+  line-height: 1.55;
+  color: var(--text-muted-strong);
+  max-width: 620px;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 22px;
+  flex-wrap: wrap;
+}
+
+.fallback {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 30%, rgba(74, 111, 255, 0.1), transparent 60%),
+    radial-gradient(ellipse 50% 50% at 80% 60%, rgba(126, 231, 255, 0.06), transparent 50%);
+}

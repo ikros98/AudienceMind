@@ -1,0 +1,101 @@
+/* -- Footer -- */
+
+.footer {
+  padding-top: var(--section-gap);
+}
+
+/* -- CTA banner -- */
+
+.ctaBanner {
+  width: min(var(--content-max), calc(100% - var(--content-padding) * 2));
+  margin-inline: auto;
+  padding: 80px 40px;
+  text-align: center;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 18, 40, 0.95) 0%,
+    rgba(8, 14, 32, 0.85) 50%,
+    rgba(6, 10, 24, 0.7) 100%
+  );
+  border: 1px solid var(--border);
+  border-bottom: none;
+}
+
+.ctaHeading {
+  margin-bottom: 28px;
+}
+
+/* -- Bottom bar -- */
+
+.bottom {
+  width: min(var(--content-max), calc(100% - var(--content-padding) * 2));
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 0;
+  border-top: 1px solid var(--border);
+}
+
+.brand {
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text-muted-strong);
+}
+
+/* -- Nav links -- */
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.navLink {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-default);
+}
+
+.navLink:hover {
+  color: var(--text);
+}
+
+.navLink:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* -- Copyright -- */
+
+.copy {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+/* -- Responsive -- */
+
+@media (max-width: 700px) {
+  .ctaBanner {
+    padding: 56px 24px;
+  }
+
+  .bottom {
+    flex-direction: column;
+    gap: 24px;
+    text-align: center;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+}

@@ -1,0 +1,58 @@
+.section {
+  padding-block: var(--section-gap);
+}
+
+.inner {
+  max-width: 1000px;
+  margin-inline: auto;
+  padding-inline: var(--content-padding);
+  text-align: center;
+}
+
+.label {
+  display: inline-block;
+  margin-bottom: 12px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--accent-cyan);
+}
+
+.heading {
+  font-size: clamp(32px, 4.8vw, 58px);
+  letter-spacing: -0.045em;
+  margin-bottom: 12px;
+}
+
+.description {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--text-muted-strong);
+  max-width: 600px;
+  margin-inline: auto;
+  margin-bottom: 32px;
+}
+
+.canvasContainer {
+  height: 500px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-elevated);
+}
+
+/* Override FluidGlass wrapper sizing */
+.canvasContainer :global(.lens-canvas-wrapper) {
+  width: 100%;
+  height: 100%;
+}
+
+.fallback {
+  height: 500px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(135deg, rgba(74, 111, 255, 0.08), rgba(126, 231, 255, 0.06), rgba(167, 139, 250, 0.08));
+}

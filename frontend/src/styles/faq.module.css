@@ -1,0 +1,103 @@
+/* -- FAQ section -- */
+
+.section {
+  padding-top: var(--section-gap);
+  padding-bottom: var(--section-gap);
+}
+
+.inner {
+  width: min(800px, calc(100% - var(--content-padding) * 2));
+  margin-inline: auto;
+}
+
+/* -- Heading -- */
+
+.heading {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+/* -- Item list -- */
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* -- FAQ item -- */
+
+.item {
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+  overflow: hidden;
+}
+
+/* -- Question button -- */
+
+.question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  transition: color var(--duration-fast) var(--ease-default);
+}
+
+.question:hover {
+  color: var(--accent-cyan-soft);
+}
+
+.question:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: -2px;
+  border-radius: 20px;
+}
+
+/* -- Caret indicator -- */
+
+.caret {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: var(--text-muted);
+  transition: transform var(--duration-slow) var(--ease-default);
+}
+
+.caretOpen {
+  composes: caret;
+  transform: rotate(180deg);
+}
+
+/* -- Answer panel (grid height trick) -- */
+
+.answerWrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--duration-slow) var(--ease-default);
+}
+
+.answerWrapOpen {
+  composes: answerWrap;
+  grid-template-rows: 1fr;
+}
+
+.answerInner {
+  overflow: hidden;
+}
+
+.answer {
+  padding: 0 24px 20px;
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
