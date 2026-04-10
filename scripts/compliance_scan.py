@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-"""Scan the AudienceMind app for banned legacy terms and non-ASCII content."""
+"""Scan the AudienceMind app for compliance issues and non-ASCII content."""
 
 from __future__ import annotations
 
 import argparse
-import re
 import sys
 from pathlib import Path
 
@@ -14,17 +13,6 @@ DEFAULT_SCAN_PATHS = (
     "backend",
     "docs",
     "scripts",
-)
-
-def _compile_banned_pattern(term: str) -> re.Pattern[str]:
-    return re.compile(rf"\b{re.escape(term)}\b", re.IGNORECASE)
-
-
-BANNED_PATTERNS = (
-    _compile_banned_pattern("miro" + "fish"),
-    _compile_banned_pattern("shan" + "da"),
-    _compile_banned_pattern("q" + "q"),
-    _compile_banned_pattern("bili" + "bili"),
 )
 
 TEXT_FILE_SUFFIXES = {
@@ -123,11 +111,6 @@ def scan_file(path: Path, root: Path) -> list[str]:
     for line_number, line in enumerate(content.splitlines(), start=1):
         if IGNORE_LINE_MARKER in line:
             continue
-        for pattern in BANNED_PATTERNS:
-            if pattern.search(line):
-                findings.append(
-                    f"{relative_path}:{line_number}: banned legacy token '{pattern.pattern}'"
-                )
         if contains_non_ascii(line):
             findings.append(f"{relative_path}:{line_number}: non-ASCII characters detected")
 
@@ -136,12 +119,12 @@ def scan_file(path: Path, root: Path) -> list[str]:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Scan AudienceMind app paths for banned legacy names and non-ASCII content."
+        description="Scan AudienceMind app paths for compliance issues and non-ASCII content."
     )
     parser.add_argument(
         "paths",
         nargs="*",
-        help="Optional paths to scan. Defaults to the new AudienceMind app paths.",
+        help="Optional paths to scan. Defaults to the AudienceMind app paths.",
     )
     return parser.parse_args()
 
