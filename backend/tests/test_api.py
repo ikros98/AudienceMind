@@ -287,7 +287,7 @@ def test_health_returns_runtime_metadata(tmp_path):
         response = client.get("/health")
         assert response.status_code == 200
         payload = response.json()
-        assert payload["service"] == "PersonaGraph API"
+        assert payload["service"] == "AudienceMind API"
         assert payload["llm_provider"] == "test"
         assert payload["workflow_runner_mode"] == "embedded"
         assert payload["simulation_backend"] == "native"

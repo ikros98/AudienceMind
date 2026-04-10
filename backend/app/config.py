@@ -23,7 +23,7 @@ for candidate in (
 class Settings(BaseSettings):
     """Runtime settings loaded from environment variables."""
 
-    app_name: str = "PersonaGraph API"
+    app_name: str = "AudienceMind API"
     env: str = "development"
     database_url: str = "sqlite:///./personagraph.db"
     data_dir: str = "./data"
