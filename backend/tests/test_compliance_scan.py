@@ -36,6 +36,20 @@ def test_compliance_scan_module_has_no_legacy_banned_token_list():
     assert not hasattr(module, "BANNED_PATTERNS")
 
 
+def test_scan_file_flags_non_ascii_in_regular_markdown(tmp_path):
+    """Non-ASCII content in a normal markdown file should be reported."""
+    module = load_compliance_scan_module()
+    path = tmp_path / "notes.md"
+    path.write_text(
+        "# Planning notes\nThis line contains Caf\u00e9.\n",
+        encoding="utf-8",
+    )
+
+    findings = module.scan_file(path, tmp_path)
+
+    assert findings == ["notes.md:2: non-ASCII characters detected"]
+
+
 def test_scan_file_ignores_docs_superpowers_paths(tmp_path):
     """Planning and spec docs under docs/superpowers should stay out of the scan."""
     module = load_compliance_scan_module()
