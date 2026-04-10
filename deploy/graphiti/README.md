@@ -19,7 +19,7 @@ This deployment package supports two modes:
 
 ## Environment Files
 
-- root `.env`: main app settings and the Graphiti client endpoint used by PersonaGraph
+- root `.env`: main app settings and the Graphiti client endpoint used by AudienceMind
 - `deploy/graphiti/local.env.example`: local Graphiti service settings for this laptop
 - `deploy/graphiti/service.env.example`: remote-server Graphiti service settings
 
@@ -191,14 +191,14 @@ Use this when Graphiti should run on a server and the app should reach it over S
 ### Suggested layout
 
 ```text
-/opt/PersonaGraph
+/opt/AudienceMind
 /opt/personagraph-graphiti
 ```
 
 The systemd template assumes:
 
-- repo backend working directory: `/opt/PersonaGraph/backend`
-- repo backend virtualenv: `/opt/PersonaGraph/backend/.venv`
+- repo backend working directory: `/opt/AudienceMind/backend`
+- repo backend virtualenv: `/opt/AudienceMind/backend/.venv`
 - service env file: `/opt/personagraph-graphiti/service.env`
 
 ### Setup
@@ -207,7 +207,7 @@ The systemd template assumes:
 
 ```bash
 sudo mkdir -p /opt/personagraph-graphiti
-sudo cp /opt/PersonaGraph/deploy/graphiti/service.env.example /opt/personagraph-graphiti/service.env
+sudo cp /opt/AudienceMind/deploy/graphiti/service.env.example /opt/personagraph-graphiti/service.env
 sudo chown -R "$USER":"$USER" /opt/personagraph-graphiti
 ```
 
@@ -222,7 +222,7 @@ sudo chown -R "$USER":"$USER" /opt/personagraph-graphiti
 3. Start Neo4j:
 
 ```bash
-cd /opt/PersonaGraph/deploy/graphiti
+cd /opt/AudienceMind/deploy/graphiti
 set -a
 source /opt/personagraph-graphiti/service.env
 set +a
@@ -233,7 +233,7 @@ If your host rejects Docker bind mounts under `/opt` with a read-only filesystem
 
 ```bash
 mkdir -p ~/personagraph-graphiti-compose
-cp /opt/PersonaGraph/deploy/graphiti/docker-compose.yml ~/personagraph-graphiti-compose/docker-compose.yml
+cp /opt/AudienceMind/deploy/graphiti/docker-compose.yml ~/personagraph-graphiti-compose/docker-compose.yml
 cd ~/personagraph-graphiti-compose
 set -a
 source /opt/personagraph-graphiti/service.env
@@ -244,16 +244,16 @@ docker compose up -d
 4. Install the service dependencies:
 
 ```bash
-cd /opt/PersonaGraph/backend
+cd /opt/AudienceMind/backend
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -r /opt/PersonaGraph/deploy/graphiti/requirements.txt
+pip install -r /opt/AudienceMind/deploy/graphiti/requirements.txt
 ```
 
 5. Install the systemd unit:
 
 ```bash
-sudo cp /opt/PersonaGraph/deploy/graphiti/systemd.service.template /etc/systemd/system/personagraph-graphiti.service
+sudo cp /opt/AudienceMind/deploy/graphiti/systemd.service.template /etc/systemd/system/personagraph-graphiti.service
 sudo systemctl daemon-reload
 sudo systemctl enable personagraph-graphiti
 sudo systemctl start personagraph-graphiti
@@ -290,7 +290,7 @@ Create a graph:
 curl -X POST http://127.0.0.1:8182/graphs \
   -H "Authorization: Bearer TOKEN" \
   -H "Content-Type: application/json" \
-  -d '{"name":"PersonaGraph test graph"}'
+  -d '{"name":"AudienceMind test graph"}'
 ```
 
 Set ontology:
@@ -321,7 +321,7 @@ curl -X POST http://127.0.0.1:8182/graphs/personagraph_example/episodes \
 
 ## Notes
 
-- The compatibility service maps PersonaGraph `graph_id` directly to Graphiti `group_id`.
+- The compatibility service maps AudienceMind `graph_id` directly to Graphiti `group_id`.
 - Graph metadata, ontology JSON, and alias maps are stored on disk under `GRAPHITI_SERVICE_DATA_DIR`.
 - `rrf` is the default search reranker because it is the safest option across mixed OpenAI-compatible providers.
 - If you want to maximize server-side throughput later, tune the LLM serving stack first. The Graphiti service itself is lightweight compared with long extraction and embedding requests.
