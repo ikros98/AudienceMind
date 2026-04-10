@@ -317,7 +317,7 @@ async def ping() -> Response:
 async def root() -> JSONResponse:
     with state_lock:
         body = {
-            "service": "personagraph-custom-vllm-lb-worker",
+            "service": "audiencemind-custom-vllm-lb-worker",
             "model": MODEL_NAME,
             "served_model_name": SERVED_MODEL_NAME,
             "ready": state.ready,
