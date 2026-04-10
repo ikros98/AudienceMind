@@ -296,6 +296,15 @@ def test_health_returns_runtime_metadata(tmp_path):
         assert payload["running_count"] == 0
 
 
+def test_openapi_title_matches_public_service_label(tmp_path):
+    """OpenAPI metadata exposes the public service label."""
+    with build_test_client(tmp_path) as client:
+        response = client.get("/openapi.json")
+        assert response.status_code == 200
+        payload = response.json()
+        assert payload["info"]["title"] == "AudienceMind API"
+
+
 def test_health_external_worker_mode_reports_queue_depth(tmp_path):
     """Health should expose when the API is running without an embedded worker."""
     settings = Settings(
