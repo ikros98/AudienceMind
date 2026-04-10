@@ -38,7 +38,7 @@ def test_episode_input_defaults_to_audiencemind_document_chunk() -> None:
 def test_ingest_episodes_splits_large_episode_after_timeout(tmp_path) -> None:
     """A slow Graphiti episode request should retry as smaller sub-chunks instead of failing immediately."""
     settings = Settings(
-        database_url=f"sqlite:///{tmp_path / 'personagraph-test.db'}",
+        database_url=f"sqlite:///{tmp_path / 'audiencemind-test.db'}",
         data_dir=str(tmp_path / "data"),
         graphiti_base_url="http://127.0.0.1:8182",
         graphiti_timeout_seconds=1.0,
@@ -78,7 +78,7 @@ def test_ingest_episodes_splits_large_episode_after_timeout(tmp_path) -> None:
 def test_ingest_episodes_splits_large_episode_after_service_timeout(tmp_path) -> None:
     """Timeout-like service errors should also trigger the smaller-chunk retry path."""
     settings = Settings(
-        database_url=f"sqlite:///{tmp_path / 'personagraph-test.db'}",
+        database_url=f"sqlite:///{tmp_path / 'audiencemind-test.db'}",
         data_dir=str(tmp_path / "data"),
         graphiti_base_url="http://127.0.0.1:8182",
         graphiti_timeout_seconds=1.0,
@@ -118,7 +118,7 @@ def test_ingest_episodes_splits_large_episode_after_service_timeout(tmp_path) ->
 def test_request_retries_connect_error_before_succeeding(tmp_path, monkeypatch: pytest.MonkeyPatch) -> None:
     """Transient Graphiti connect failures should be retried before surfacing to callers."""
     settings = Settings(
-        database_url=f"sqlite:///{tmp_path / 'personagraph-test.db'}",
+        database_url=f"sqlite:///{tmp_path / 'audiencemind-test.db'}",
         data_dir=str(tmp_path / "data"),
         graphiti_base_url="http://127.0.0.1:8182",
     )
@@ -150,7 +150,7 @@ def test_request_retries_connect_error_before_succeeding(tmp_path, monkeypatch: 
 def test_ingest_episodes_emits_heartbeat_while_batch_request_is_running(tmp_path) -> None:
     """Slow Graphiti batch requests should keep task progress alive instead of looking frozen."""
     settings = Settings(
-        database_url=f"sqlite:///{tmp_path / 'personagraph-test.db'}",
+        database_url=f"sqlite:///{tmp_path / 'audiencemind-test.db'}",
         data_dir=str(tmp_path / "data"),
         graphiti_base_url="http://127.0.0.1:8182",
         graphiti_timeout_seconds=5.0,
@@ -251,7 +251,7 @@ def test_normalize_graphiti_payload_keeps_market_actors_out_of_location_bucket()
 def test_wait_for_graph_settle_raises_when_graphiti_returns_empty_graph(tmp_path) -> None:
     """A fully empty Graphiti payload should fail the build instead of being accepted as success."""
     settings = Settings(
-        database_url=f"sqlite:///{tmp_path / 'personagraph-test.db'}",
+        database_url=f"sqlite:///{tmp_path / 'audiencemind-test.db'}",
         data_dir=str(tmp_path / "data"),
         graphiti_base_url="http://127.0.0.1:8182",
         graphiti_timeout_seconds=1.0,
@@ -292,7 +292,7 @@ def test_wait_for_graph_settle_raises_when_graphiti_returns_empty_graph(tmp_path
 def test_graphiti_backend_builds_legacy_reference_like_episode_batches(tmp_path) -> None:
     """The clean-room graph ingester should stay in the same chunk-count band as the legacy reference."""
     settings = Settings(
-        database_url=f"sqlite:///{tmp_path / 'personagraph-test.db'}",
+        database_url=f"sqlite:///{tmp_path / 'audiencemind-test.db'}",
         data_dir=str(tmp_path / "data"),
         graphiti_base_url="http://127.0.0.1:8182",
         graph_batch_size=3,
@@ -317,7 +317,7 @@ def test_graphiti_backend_builds_legacy_reference_like_episode_batches(tmp_path)
 def test_graphiti_backend_uses_single_episode_batches_like_legacy_reference(tmp_path) -> None:
     """Graphiti ingest should stay on single-episode requests, matching the stable legacy reference path."""
     settings = Settings(
-        database_url=f"sqlite:///{tmp_path / 'personagraph-test.db'}",
+        database_url=f"sqlite:///{tmp_path / 'audiencemind-test.db'}",
         data_dir=str(tmp_path / "data"),
         graphiti_base_url="http://127.0.0.1:8182",
         graph_batch_size=3,
@@ -334,7 +334,7 @@ def test_graphiti_backend_uses_single_episode_batches_like_legacy_reference(tmp_
 def test_graphiti_backend_keeps_openrouter_free_qwen_chunks_small_on_first_pass(tmp_path) -> None:
     """The hosted OpenRouter free Qwen path should start with genuinely smaller Graphiti episodes."""
     settings = Settings(
-        database_url=f"sqlite:///{tmp_path / 'personagraph-test.db'}",
+        database_url=f"sqlite:///{tmp_path / 'audiencemind-test.db'}",
         data_dir=str(tmp_path / "data"),
         graphiti_base_url="http://127.0.0.1:8182",
         llm_base_url="https://openrouter.ai/api/v1",
@@ -365,7 +365,7 @@ def test_graphiti_backend_episode_fallback_source_description_uses_audiencemind(
 ) -> None:
     """When no project label can be inferred, episode source descriptions should use the AudienceMind fallback."""
     settings = Settings(
-        database_url=f"sqlite:///{tmp_path / 'personagraph-test.db'}",
+        database_url=f"sqlite:///{tmp_path / 'audiencemind-test.db'}",
         data_dir=str(tmp_path / "data"),
         graphiti_base_url="http://127.0.0.1:8182",
     )
@@ -394,7 +394,7 @@ def test_graphiti_backend_build_artifacts_falls_back_to_audiencemind_branding(
 ) -> None:
     """Graph creation should use AudienceMind-branded fallback names when no project label or objective exists."""
     settings = Settings(
-        database_url=f"sqlite:///{tmp_path / 'personagraph-test.db'}",
+        database_url=f"sqlite:///{tmp_path / 'audiencemind-test.db'}",
         data_dir=str(tmp_path / "data"),
         graphiti_base_url="http://127.0.0.1:8182",
     )
