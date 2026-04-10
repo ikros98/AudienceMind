@@ -296,7 +296,7 @@ curl -X POST http://127.0.0.1:8182/graphs \
 Set ontology:
 
 ```bash
-curl -X PUT http://127.0.0.1:8182/graphs/personagraph_example/ontology \
+curl -X PUT http://127.0.0.1:8182/graphs/audiencemind_example/ontology \
   -H "Authorization: Bearer TOKEN" \
   -H "Content-Type: application/json" \
   -d @ontology.json
@@ -305,7 +305,7 @@ curl -X PUT http://127.0.0.1:8182/graphs/personagraph_example/ontology \
 Ingest one episode:
 
 ```bash
-curl -X POST http://127.0.0.1:8182/graphs/personagraph_example/episodes \
+curl -X POST http://127.0.0.1:8182/graphs/audiencemind_example/episodes \
   -H "Authorization: Bearer TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
