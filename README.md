@@ -48,7 +48,7 @@ npm run dev
 Graph jobs, simulations, and reports are queued first and then executed by a workflow runner.
 
 - local default: the API starts an embedded runner
-- split deployment: set `PERSONAGRAPH_EMBED_WORKFLOW_RUNNER=false` for the API and run `uv run personagraph-worker` separately
+- split deployment: set `PERSONAGRAPH_EMBED_WORKFLOW_RUNNER=false` for the API and run `uv run personagraph-worker` separately; both names are retained compatibility-only identifiers
 - queue claims are atomic in the database so API and worker processes can coexist safely
 - each workflow record now persists live `progress_percent`, `status_message`, `started_at`, and `completed_at` fields
 - durable update feeds are available at `/graph-jobs/{id}/updates`, `/simulations/{id}/updates`, and `/reports/{id}/updates`
@@ -70,7 +70,7 @@ The FastAPI backend exposes the compatibility surface under `/api/...` for the f
 - generic Graphiti nodes that are obviously countries or cities now normalize to `Location` on readback, so the glass graph no longer exposes raw `Entity` labels for those nodes
 - the native AudienceMind runtime is now the supported execution path for `frontend`
 - non-test simulation runs now execute inside an AudienceMind-owned OASIS worker process backed by `camel-oasis` and `camel-ai`
-- backend test runs still use a deterministic in-process simulation path when `PERSONAGRAPH_LLM_PROVIDER=test` so tests remain fast and reproducible
+- backend test runs still use a deterministic in-process simulation path when `PERSONAGRAPH_LLM_PROVIDER=test`, a retained compatibility-only test flag, so tests remain fast and reproducible
 - graph-grounded preparation persists `prepared_entities.json` and `preparation_manifest.json` alongside generated profiles and config
 - each native glass simulation persists runtime artifacts such as `state.json`, `env.json`, platform action logs, post and comment snapshots, worker logs, interview IPC files, and scheduled-event activity under `backend/data/glass/simulations/<simulation_id>/`
 - non-test preparation now uses structured graph-grounded persona and config enrichment, including richer trust lenses, narrative roles, platform behavior, agent pacing, seeded posts, scheduled events, and platform tuning, with deterministic fallback preserved for test mode
@@ -118,6 +118,8 @@ The backend sync step now installs the native OASIS runtime dependencies used by
 - `camel-oasis`
 - `camel-ai`
 - `openai`
+
+The environment variable names below are retained compatibility-only identifiers for the AudienceMind runtime and deployment surface.
 
 ## Main Environment Variables
 

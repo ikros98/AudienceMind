@@ -2,7 +2,7 @@
 
 FastAPI service for the new AudienceMind application.
 
-The React workflow frontend primarily talks to the backend through the compatibility surface under `/api/`, which is implemented in `app/routes/legacy_compat.py` but backed by the current native AudienceMind runtime.
+The React workflow frontend primarily talks to the backend through the compatibility surface under `/api/...`, which is implemented in `app/routes/legacy_compat.py` but backed by the current native AudienceMind runtime.
 
 ## Current API Surface
 
@@ -26,7 +26,7 @@ The React workflow frontend primarily talks to the backend through the compatibi
 - `GET /reports/{report_id}`
 - `POST /analysis/chat`
 
-Artifacts are written under `PERSONAGRAPH_DATA_DIR`:
+Artifacts are written under `PERSONAGRAPH_DATA_DIR`, a retained compatibility-only environment variable:
 
 - `sources/<project_id>/...`
 - `artifacts/graph-jobs/<graph_job_id>/...`
@@ -48,7 +48,7 @@ Graph jobs, simulations, and reports now persist `queued`, `running`, `completed
 
 The runner:
 
-- polls for queued work using `PERSONAGRAPH_WORKFLOW_POLL_INTERVAL_SECONDS`
+- polls for queued work using `PERSONAGRAPH_WORKFLOW_POLL_INTERVAL_SECONDS`, a retained compatibility-only environment variable
 - re-queues `running` workflow records on startup to recover from interrupted local runs
 - processes graph jobs before simulations and reports so queued dependencies settle in order
 - claims queued work atomically in the database before execution so API and worker processes can coexist safely
@@ -70,11 +70,15 @@ Run the API without the embedded runner:
 PERSONAGRAPH_EMBED_WORKFLOW_RUNNER=false uv run uvicorn app.main:app --reload --port 8020
 ```
 
+`PERSONAGRAPH_EMBED_WORKFLOW_RUNNER` is retained here as a compatibility-only environment variable.
+
 Run the worker in a separate terminal:
 
 ```bash
 uv run personagraph-worker
 ```
+
+`personagraph-worker` is the retained compatibility-only worker command name.
 
 ## Container Run
 

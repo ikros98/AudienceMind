@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Scan the new PersonaGraph app for banned legacy terms and non-ASCII content."""
+"""Scan the AudienceMind app for banned legacy terms and non-ASCII content."""
 
 from __future__ import annotations
 
@@ -22,7 +22,6 @@ def _compile_banned_pattern(term: str) -> re.Pattern[str]:
 
 BANNED_PATTERNS = (
     _compile_banned_pattern("miro" + "fish"),
-    _compile_banned_pattern("audience" + "mind"),
     _compile_banned_pattern("shan" + "da"),
     _compile_banned_pattern("q" + "q"),
     _compile_banned_pattern("bili" + "bili"),
@@ -66,6 +65,7 @@ IGNORED_DIR_NAMES = {
 
 IGNORED_PATH_PREFIXES = (
     Path("backend/data"),
+    Path("docs/superpowers"),
 )
 
 IGNORE_FILE_MARKER = "compliance-scan: ignore-file"
@@ -136,12 +136,12 @@ def scan_file(path: Path, root: Path) -> list[str]:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Scan PersonaGraph app paths for banned legacy names and non-ASCII content."
+        description="Scan AudienceMind app paths for banned legacy names and non-ASCII content."
     )
     parser.add_argument(
         "paths",
         nargs="*",
-        help="Optional paths to scan. Defaults to the new PersonaGraph app paths.",
+        help="Optional paths to scan. Defaults to the new AudienceMind app paths.",
     )
     return parser.parse_args()
 

@@ -61,6 +61,8 @@ PERSONAGRAPH_REPORT_BACKEND=native
 PERSONAGRAPH_EMBED_WORKFLOW_RUNNER=true
 ```
 
+The `PERSONAGRAPH_*` values above are retained compatibility-only environment names for the AudienceMind runtime.
+
 ## Simple Test Scenario
 
 Create one project with this sample data.
@@ -279,7 +281,7 @@ Expected: the app recovers and workflow state remains visible after restart.
 Run this only if there is time:
 
 1. Start the API with `PERSONAGRAPH_EMBED_WORKFLOW_RUNNER=false`.
-2. Start `uv run personagraph-worker` in a separate terminal.
+2. Start `uv run personagraph-worker` in a separate terminal; the worker command name is retained for compatibility.
 3. Repeat the main happy path quickly.
 
 Expected results:
