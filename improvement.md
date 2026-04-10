@@ -1,11 +1,11 @@
 # Improvement Plan
 
 ## Purpose
-This document lists the improvements that should be delivered as part of the PersonaGraph baseline itself. These items reduce legal, compliance, and maintenance risk immediately.
+This document lists the improvements that should be delivered as part of the AudienceMind baseline itself. These items reduce legal, compliance, and maintenance risk immediately.
 
 ## Improvements To Deliver In The Current Platform
 - Build and keep the product in the clean repository root app rather than reintroducing archived code paths.
-- Keep branding, screenshots, logos, community references, and product copy aligned with English-only PersonaGraph language.
+- Keep branding, screenshots, logos, community references, and product copy aligned with English-only AudienceMind language.
 - Use a modular frontend with a shared workspace shell instead of route-by-route duplicated layouts and oversized components.
 - Use typed frontend and backend contracts so project, graph, simulation, and report workflows are explicit and testable.
 - Replace fragile file-only and in-memory workflow state with durable application state and recoverable job execution.

@@ -1,7 +1,7 @@
 # Future Improvements
 
 ## Purpose
-This document captures worthwhile follow-on work that should stay out of the current PersonaGraph baseline. These items are intentionally deferred so the product stays focused on a stable analyst workflow and a maintainable core.
+This document captures worthwhile follow-on work that should stay out of the current AudienceMind baseline. These items are intentionally deferred so the product stays focused on a stable analyst workflow and a maintainable core.
 
 ## Deferred Product And Platform Work
 - Add role-based access control, audit trails, and multi-user collaboration flows.

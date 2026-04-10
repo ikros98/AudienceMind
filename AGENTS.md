@@ -1,6 +1,6 @@
 # Repository Instructions
 
-This repository now uses the clean-room PersonaGraph application at the repository root.
+This repository now uses the clean-room AudienceMind application at the repository root.
 
 ## Scope And Working Path
 
@@ -16,7 +16,7 @@ This repository now uses the clean-room PersonaGraph application at the reposito
 
 ## Product Boundary
 
-- Keep PersonaGraph English-only across code, docs, filenames, UI strings, and examples.
+- Keep AudienceMind English-only across code, docs, filenames, UI strings, and examples.
 - Do not add retired product names, retired org/community references, or legacy screenshots/assets into the active product path except in narrowly scoped compliance or migration documentation.
 - Keep the clean-room implementation structurally separate from any temporary migration artifacts.
 

@@ -1,4 +1,4 @@
-# PersonaGraph Simulation Prompts for Ralph Lauren Marketing
+# AudienceMind Simulation Prompts for Ralph Lauren Marketing
 
 ## Prompt Option 1: Gen Z Brand Perception
 > Simulate how Gen Z consumers (ages 18-27) on Twitter and Reddit react to Ralph Lauren's attempt to position itself as culturally relevant to younger audiences. Include fashion influencers, streetwear enthusiasts, sustainability-conscious consumers, luxury brand competitors (Tommy Hilfiger, Burberry), and mainstream fashion media. Predict whether the "Ralph Lauren Christmas" viral aesthetic trend can translate into sustained brand loyalty, or if it remains a fleeting social media moment. Analyze sentiment around pricing ($150-300 polo shirts vs. fast fashion alternatives), brand authenticity, and sustainability criticism.

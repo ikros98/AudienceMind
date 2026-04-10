@@ -1,8 +1,8 @@
-# PersonaGraph Platform Plan
+# AudienceMind Platform Plan
 
 ## Summary
 
-- Keep the English-only `PersonaGraph` application at the repository root as the active product.
+- Keep the English-only `AudienceMind` application at the repository root as the active product.
 - Preserve an analyst-focused experience with a typed frontend, typed backend, durable local persistence, and explicit adapter boundaries.
 - Keep infrastructure-specific integrations behind replaceable interfaces so providers can change without rewriting the product core.
 - Maintain a clean and well-documented structure that can serve as the baseline for future development.
@@ -18,7 +18,7 @@
 ## Frontend Direction
 
 - Use React + TypeScript + Vite.
-- Create a distinct PersonaGraph visual language:
+- Create a distinct AudienceMind visual language:
   - analyst workstation feel
   - neutral palette
   - no fish imagery
