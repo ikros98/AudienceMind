@@ -75,7 +75,7 @@ export default function DemoPage() {
       {/* -- Top bar -- */}
       <header className={s.topBar}>
         <div className={s.topBarLeft}>
-          <Link to="/" className={s.logo}>PersonaGraph</Link>
+          <Link to="/" className={s.logo}>AudienceMind</Link>
           <WorkflowNav />
         </div>
         <div className={s.topBarRight}>

@@ -26,7 +26,7 @@ export function Footer() {
 
       {/* -- Bottom bar -- */}
       <div className={styles.bottom}>
-        <span className={styles.brand}>PersonaGraph</span>
+        <span className={styles.brand}>AudienceMind</span>
 
         <nav className={styles.nav} aria-label="Footer navigation">
           {FOOTER_LINKS.map(({ label, href }) => (
@@ -36,7 +36,7 @@ export function Footer() {
           ))}
         </nav>
 
-        <span className={styles.copy}>(c) 2026 PersonaGraph</span>
+        <span className={styles.copy}>(c) 2026 AudienceMind</span>
       </div>
     </footer>
   );

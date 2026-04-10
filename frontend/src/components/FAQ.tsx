@@ -4,12 +4,12 @@ import styles from "../styles/faq.module.css";
 
 const FAQ_DATA = [
   {
-    q: "What is PersonaGraph?",
-    a: "PersonaGraph is an AI-powered platform that builds knowledge graphs from your evidence documents, simulates audience personas interacting with narratives, and generates grounded analysis reports with full citation trails.",
+    q: "What is AudienceMind?",
+    a: "AudienceMind is an AI-powered platform that builds knowledge graphs from your evidence documents, simulates audience personas interacting with narratives, and generates grounded analysis reports with full citation trails.",
   },
   {
     q: "What file formats can I upload?",
-    a: "PersonaGraph accepts PDF, Markdown (.md), and plain text (.txt) files. The graph construction engine extracts entities, relationships, and narrative threads automatically.",
+    a: "AudienceMind accepts PDF, Markdown (.md), and plain text (.txt) files. The graph construction engine extracts entities, relationships, and narrative threads automatically.",
   },
   {
     q: "How does the persona simulation work?",
@@ -17,15 +17,15 @@ const FAQ_DATA = [
   },
   {
     q: "Is my data private?",
-    a: "Yes. PersonaGraph runs locally with your own LLM backend (Ollama-compatible). Your documents, graphs, and simulation results never leave your infrastructure.",
+    a: "Yes. AudienceMind runs locally with your own LLM backend (Ollama-compatible). Your documents, graphs, and simulation results never leave your infrastructure.",
   },
   {
-    q: "Can I self-host PersonaGraph?",
-    a: "Absolutely. PersonaGraph ships as Docker containers - a FastAPI backend, a PostgreSQL database, and this frontend. Run it anywhere Docker is supported.",
+    q: "Can I self-host AudienceMind?",
+    a: "Absolutely. AudienceMind ships as Docker containers - a FastAPI backend, a PostgreSQL database, and this frontend. Run it anywhere Docker is supported.",
   },
   {
     q: "What LLM backends are supported?",
-    a: "PersonaGraph works with any Ollama-compatible model. You can use local models or tunnel to remote Ollama instances. The architecture is model-agnostic.",
+    a: "AudienceMind works with any Ollama-compatible model. You can use local models or tunnel to remote Ollama instances. The architecture is model-agnostic.",
   },
 ] as const;
 

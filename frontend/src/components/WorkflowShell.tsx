@@ -21,7 +21,7 @@ export default function WorkflowShell({ graphPanel, children }: Props) {
       {/* Top bar */}
       <div className={s.topBar}>
         <div className={s.topBarLeft}>
-          <Link to="/" className={s.logo}>PersonaGraph</Link>
+          <Link to="/" className={s.logo}>AudienceMind</Link>
           <WorkflowNav />
         </div>
         <div className={s.topBarRight}>

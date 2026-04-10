@@ -178,7 +178,7 @@ const features = [
     label: "Graph Construction",
     title: "Build knowledge graphs from raw evidence.",
     description:
-      "Upload PDFs, markdown, or plain text. PersonaGraph extracts entities, relationships, and narrative threads - then constructs an interactive knowledge graph you can inspect and refine.",
+      "Upload PDFs, markdown, or plain text. AudienceMind extracts entities, relationships, and narrative threads - then constructs an interactive knowledge graph you can inspect and refine.",
     visual: <GraphMock />,
     reverse: false,
   },

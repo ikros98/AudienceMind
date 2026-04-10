@@ -6,7 +6,7 @@ export function Hero() {
       <div className={styles.fallback} />
 
       <div className={styles.content}>
-        <span className={styles.eyebrow}>PersonaGraph</span>
+        <span className={styles.eyebrow}>AudienceMind</span>
 
         <h1 className={styles.heading}>
           Build the graph. Stress the narrative. Inspect the outcome.

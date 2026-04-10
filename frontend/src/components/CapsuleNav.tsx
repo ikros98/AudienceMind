@@ -42,7 +42,7 @@ export function CapsuleNav() {
               </linearGradient>
             </defs>
           </svg>
-          <span className={styles.brandName}>PersonaGraph</span>
+          <span className={styles.brandName}>AudienceMind</span>
         </a>
 
         {/* -- Desktop nav links -- */}

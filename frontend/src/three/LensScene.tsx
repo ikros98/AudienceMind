@@ -41,7 +41,7 @@ function DashboardContent() {
         anchorX="left"
         anchorY="middle"
       >
-        PersonaGraph Dashboard
+        AudienceMind Dashboard
       </Text>
 
       {/* Left sidebar panel */}
