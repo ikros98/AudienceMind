@@ -52,7 +52,7 @@ class SetOntologyResponse(BaseModel):
 class EpisodeInput(BaseModel):
     name: str
     episode_body: str
-    source_description: str = "PersonaGraph document chunk"
+    source_description: str = "AudienceMind document chunk"
     reference_time: datetime | None = None
     source: str = "message"
     uuid: str | None = None

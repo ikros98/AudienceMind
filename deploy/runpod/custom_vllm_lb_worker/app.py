@@ -75,7 +75,7 @@ HTTP_TIMEOUT = httpx.Timeout(
 state = WorkerState()
 state_lock = threading.Lock()
 startup_thread: threading.Thread | None = None
-app = FastAPI(title="PersonaGraph custom vLLM LB worker", docs_url=None, redoc_url=None)
+app = FastAPI(title="AudienceMind custom vLLM LB worker", docs_url=None, redoc_url=None)
 
 
 def build_vllm_command() -> list[str]:

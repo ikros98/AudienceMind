@@ -47,7 +47,7 @@ async def lifespan(app: FastAPI):
     yield
 
 
-app = FastAPI(title="PersonaGraph Graphiti Compatibility Service", lifespan=lifespan)
+app = FastAPI(title="AudienceMind Graphiti Compatibility Service", lifespan=lifespan)
 
 
 def get_service(request: Request) -> GraphitiCompatibilityService:

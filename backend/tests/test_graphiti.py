@@ -2,14 +2,37 @@
 
 from __future__ import annotations
 
+import importlib
+import sys
 import time
+import types
 import httpx
 import pytest
 
 from app.config import Settings
+from app.graphiti_service.models import EpisodeInput
 from app.models import Project, SourceDocument
 from app.services.adapters import GraphitiGraphBackend
 from app.services.graphiti import GraphitiClient, normalize_graphiti_payload
+from app.services.generation import GraphArtifacts
+
+
+def test_graphiti_service_fastapi_title_is_audiencemind(monkeypatch: pytest.MonkeyPatch) -> None:
+    """The public Graphiti compatibility service title should use the AudienceMind brand."""
+    llm_module = types.ModuleType("app.graphiti_service.llm")
+    llm_module.create_graphiti = lambda settings: None
+    service_module = types.ModuleType("app.graphiti_service.service")
+    service_module.GraphitiCompatibilityService = object
+    monkeypatch.setitem(sys.modules, "app.graphiti_service.llm", llm_module)
+    monkeypatch.setitem(sys.modules, "app.graphiti_service.service", service_module)
+    main_module = importlib.import_module("app.graphiti_service.main")
+
+    assert main_module.app.title == "AudienceMind Graphiti Compatibility Service"
+
+
+def test_episode_input_defaults_to_audiencemind_document_chunk() -> None:
+    """Episode input defaults should not leak the retired product name."""
+    assert EpisodeInput(name="brief-1", episode_body="hello").source_description == "AudienceMind document chunk"
 
 
 def test_ingest_episodes_splits_large_episode_after_timeout(tmp_path) -> None:
@@ -335,3 +358,113 @@ def test_graphiti_backend_keeps_openrouter_free_qwen_chunks_small_on_first_pass(
 
     assert episodes
     assert max(len(item["episode_body"]) for item in episodes) <= 700
+
+
+def test_graphiti_backend_episode_fallback_source_description_uses_audiencemind(
+    tmp_path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """When no project label can be inferred, episode source descriptions should use the AudienceMind fallback."""
+    settings = Settings(
+        database_url=f"sqlite:///{tmp_path / 'personagraph-test.db'}",
+        data_dir=str(tmp_path / "data"),
+        graphiti_base_url="http://127.0.0.1:8182",
+    )
+    backend = GraphitiGraphBackend(
+        settings=settings,
+        name="graphiti",
+        label="Graphiti graph materialization",
+    )
+    project = Project(name="Prompt 6", scenario_brief="Brand repositioning")
+    document = SourceDocument(
+        project_id=project.id,
+        filename="brief.md",
+        extracted_text="Audience research findings for the next launch.",
+    )
+
+    monkeypatch.setattr("app.services.adapters.infer_project_name", lambda *args, **kwargs: "")
+
+    episodes = backend._build_episodes(project, [document])
+
+    assert episodes
+    assert all(item["source_description"] == "AudienceMind document chunk" for item in episodes)
+
+
+def test_graphiti_backend_build_artifacts_falls_back_to_audiencemind_branding(
+    tmp_path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Graph creation should use AudienceMind-branded fallback names when no project label or objective exists."""
+    settings = Settings(
+        database_url=f"sqlite:///{tmp_path / 'personagraph-test.db'}",
+        data_dir=str(tmp_path / "data"),
+        graphiti_base_url="http://127.0.0.1:8182",
+    )
+    backend = GraphitiGraphBackend(
+        settings=settings,
+        name="graphiti",
+        label="Graphiti graph materialization",
+    )
+    project = Project(name="", description="", scenario_brief="")
+    document = SourceDocument(
+        project_id=project.id,
+        filename="brief.md",
+        extracted_text="Graph materialization source text.",
+    )
+    recorded: dict[str, str] = {}
+
+    class FakeGraphitiClient:
+        def __init__(self, _settings: Settings) -> None:
+            pass
+
+        def delete_graph(self, graph_id: str, ignore_missing: bool = False) -> None:
+            return None
+
+        def create_graph(self, graph_id: str, name: str, description: str) -> None:
+            recorded["graph_id"] = graph_id
+            recorded["name"] = name
+            recorded["description"] = description
+
+        def set_ontology(self, graph_id: str, ontology: dict) -> None:
+            return None
+
+        def ingest_episodes(self, graph_id: str, episodes: list[dict], **kwargs) -> None:
+            return None
+
+        def wait_for_graph_settle(self, graph_id: str, **kwargs) -> dict:
+            return {
+                "nodes": [{"uuid": "node-1"}],
+                "edges": [{"uuid": "edge-1"}],
+                "metadata": {
+                    "node_count": 1,
+                    "edge_count": 1,
+                    "entity_types": ["Organization"],
+                },
+            }
+
+        def close(self) -> None:
+            return None
+
+    monkeypatch.setattr("app.services.adapters.infer_project_name", lambda *args, **kwargs: "")
+    monkeypatch.setattr(
+        "app.services.adapters.build_graph_artifacts",
+        lambda *args, **kwargs: GraphArtifacts(
+            summary="base",
+            source_digest="digest",
+            schema_markdown="schema",
+            evidence_markdown="evidence",
+            node_count=0,
+            edge_count=0,
+        ),
+    )
+    monkeypatch.setattr(backend, "_build_ontology", lambda **kwargs: {"entity_types": [], "edge_types": []})
+    monkeypatch.setattr("app.services.adapters.GraphitiClient", FakeGraphitiClient)
+
+    artifacts = backend.build_artifacts(
+        llm=None,
+        project=project,
+        documents=[document],
+        objective="",
+    )
+
+    assert artifacts.graph_id == project.id
+    assert recorded["name"] == "AudienceMind Graph"
+    assert recorded["description"] == "AudienceMind graph materialization"

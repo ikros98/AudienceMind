@@ -18,7 +18,7 @@ That prevents RunPod from routing real traffic to a worker that still looks "up"
 
 ```bash
 docker build --platform linux/amd64 \
-  -t ghcr.io/YOUR_GH_USER/personagraph-qwen35-vllm-lb:latest \
+  -t ghcr.io/YOUR_GH_USER/audiencemind-qwen35-vllm-lb:latest \
   -f deploy/runpod/custom_vllm_lb_worker/Dockerfile .
 ```
 
@@ -26,7 +26,7 @@ docker build --platform linux/amd64 \
 
 ```bash
 echo "$CR_PAT" | docker login ghcr.io -u YOUR_GH_USER --password-stdin
-docker push ghcr.io/YOUR_GH_USER/personagraph-qwen35-vllm-lb:latest
+docker push ghcr.io/YOUR_GH_USER/audiencemind-qwen35-vllm-lb:latest
 ```
 
 ## Runtime env

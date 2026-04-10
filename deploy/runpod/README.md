@@ -15,17 +15,17 @@ That is the correct shape for RunPod load balancing, which routes traffic based 
 
 ```bash
 docker build --platform linux/amd64 \
-  -t ghcr.io/YOUR_GH_USER/personagraph-qwen35-vllm-lb:latest \
+  -t ghcr.io/YOUR_GH_USER/audiencemind-qwen35-vllm-lb:latest \
   -f deploy/runpod/custom_vllm_lb_worker/Dockerfile .
 
 echo "$CR_PAT" | docker login ghcr.io -u YOUR_GH_USER --password-stdin
-docker push ghcr.io/YOUR_GH_USER/personagraph-qwen35-vllm-lb:latest
+docker push ghcr.io/YOUR_GH_USER/audiencemind-qwen35-vllm-lb:latest
 ```
 
 ## Create the endpoint
 
 ```bash
-RUNPOD_VLLM_IMAGE=ghcr.io/YOUR_GH_USER/personagraph-qwen35-vllm-lb:latest \
+RUNPOD_VLLM_IMAGE=ghcr.io/YOUR_GH_USER/audiencemind-qwen35-vllm-lb:latest \
 uv run --with runpod-flash==1.10.0 python deploy/runpod/create_qwen35_vllm_lb.py
 ```
 

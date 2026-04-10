@@ -5,7 +5,7 @@ IMAGE_NAME="${RUNPOD_VLLM_IMAGE:-}"
 
 if [[ -z "${IMAGE_NAME}" ]]; then
   echo "Set RUNPOD_VLLM_IMAGE, for example:"
-  echo "  RUNPOD_VLLM_IMAGE=ghcr.io/YOUR_GH_USER/personagraph-qwen35-vllm-lb:latest"
+  echo "  RUNPOD_VLLM_IMAGE=ghcr.io/YOUR_GH_USER/audiencemind-qwen35-vllm-lb:latest"
   exit 1
 fi
 

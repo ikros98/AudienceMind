@@ -191,7 +191,7 @@ class GraphitiGraphBackend:
         graph_id: str | None = None,
         progress_callback: GraphBuildProgress | None = None,
     ) -> GraphArtifacts:
-        """Build real graph artifacts with Graphiti and normalize them for PersonaGraph."""
+        """Build real graph artifacts with Graphiti and normalize them for AudienceMind."""
         base_artifacts = build_graph_artifacts(llm, project, documents, objective)
         source_documents = [item for item in documents if (item.extracted_text or "").strip()]
         if not source_documents:
@@ -226,8 +226,8 @@ class GraphitiGraphBackend:
             client.delete_graph(resolved_graph_id, ignore_missing=True)
             client.create_graph(
                 graph_id=resolved_graph_id,
-                name=resolved_project_name or "PersonaGraph Graph",
-                description=objective or project.scenario_brief or "PersonaGraph graph materialization",
+                name=resolved_project_name or "AudienceMind Graph",
+                description=objective or project.scenario_brief or "AudienceMind graph materialization",
             )
             if progress_callback is not None:
                 progress_callback(24.0, "Registering ontology with Graphiti.")
@@ -333,7 +333,7 @@ class GraphitiGraphBackend:
                     {
                         "name": f"{source_label}-{index}",
                         "episode_body": chunk,
-                        "source_description": f"{project_label or 'PersonaGraph'} document chunk",
+                        "source_description": f"{project_label or 'AudienceMind'} document chunk",
                     }
                 )
         return episodes

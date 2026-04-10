@@ -21,7 +21,7 @@ from runpod_flash.core.utils.user_agent import get_user_agent
 
 ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_MODEL = "Qwen/Qwen3.5-35B-A3B-FP8"
-DEFAULT_NAME = "PersonaGraph Qwen35 latest vLLM"
+DEFAULT_NAME = "AudienceMind Qwen35 latest vLLM"
 
 
 def load_root_env() -> None:
