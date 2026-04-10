@@ -1,8 +1,8 @@
-# PersonaGraph - Final Use Cases
+# AudienceMind - Final Use Cases
 
 ## The Platform in One Sentence
 
-PersonaGraph turns source documents into a graph-grounded actor ecosystem, runs a multi-agent social simulation, produces an evidence-backed report, and lets the analyst interrogate both the report and the simulated personas.
+AudienceMind turns source documents into a graph-grounded actor ecosystem, runs a multi-agent social simulation, produces an evidence-backed report, and lets the analyst interrogate both the report and the simulated personas.
 
 Core workflow: **Graph -> Setup -> Simulate -> Report -> Interact**.
 
@@ -21,7 +21,7 @@ Brand teams and agencies spend significant budget testing campaign concepts, pro
 - Integrated marketing teams
 - Product marketing organizations
 
-### What PersonaGraph Does
+### What AudienceMind Does
 
 1. The analyst uploads a campaign brief, brand strategy document, or product launch plan.
 2. The platform extracts an actor ecosystem: consumer cohorts, media, influencers, competitors, retail partners, institutional actors.
@@ -47,7 +47,7 @@ Upload a luxury brand's seasonal strategy brief describing a premiumization shif
 
 ### The Opportunity
 
-The global market research industry is worth over $80 billion. Traditional qualitative research (focus groups, depth interviews, ethnographies, panels) is slow (weeks to months), expensive ($50K-$500K per study), difficult to repeat, and limited by panel availability and geography. PersonaGraph already has the core mechanics of a synthetic research engine and can deliver comparable insight at software speed.
+The global market research industry is worth over $80 billion. Traditional qualitative research (focus groups, depth interviews, ethnographies, panels) is slow (weeks to months), expensive ($50K-$500K per study), difficult to repeat, and limited by panel availability and geography. AudienceMind already has the core mechanics of a synthetic research engine and can deliver comparable insight at software speed.
 
 ### Who Pays
 
@@ -56,7 +56,7 @@ The global market research industry is worth over $80 billion. Traditional quali
 - Agencies with research practices
 - Consultancies delivering strategic research to clients
 
-### What PersonaGraph Does
+### What AudienceMind Does
 
 1. The analyst uploads research briefs, competitive intelligence, industry reports, or customer segmentation documents.
 2. The platform builds a graph of the market ecosystem: consumer segments, competitors, influencers, channel partners, cultural dynamics.
@@ -67,7 +67,7 @@ The global market research industry is worth over $80 billion. Traditional quali
 
 ### Concrete Example
 
-A consumer electronics company is deciding between three pricing tiers for a new product. The analyst uploads the product brief and competitive landscape. PersonaGraph generates a panel spanning early adopters, price-sensitive mainstream buyers, tech media, and retail channel partners. The simulation runs each pricing scenario. The report compares segment reactions across tiers, highlights where price sensitivity creates adoption risk, and surfaces the messaging adjustments needed for each option.
+A consumer electronics company is deciding between three pricing tiers for a new product. The analyst uploads the product brief and competitive landscape. AudienceMind generates a panel spanning early adopters, price-sensitive mainstream buyers, tech media, and retail channel partners. The simulation runs each pricing scenario. The report compares segment reactions across tiers, highlights where price sensitivity creates adoption risk, and surfaces the messaging adjustments needed for each option.
 
 ### What Makes This Work Today and What Gets Better
 
@@ -99,7 +99,7 @@ None of these require architectural changes. They are workflow and presentation 
 
 ### The Opportunity
 
-When a controversial event is anticipated or already underway, communications teams need to understand who will amplify the story, what narratives will dominate, where coalitions will form, and where response plans will fail. Traditional crisis prep relies on static playbooks and scenario workshops that cannot model dynamic stakeholder interaction. PersonaGraph can simulate the crisis environment before it happens.
+When a controversial event is anticipated or already underway, communications teams need to understand who will amplify the story, what narratives will dominate, where coalitions will form, and where response plans will fail. Traditional crisis prep relies on static playbooks and scenario workshops that cannot model dynamic stakeholder interaction. AudienceMind can simulate the crisis environment before it happens.
 
 ### Who Pays
 
@@ -108,7 +108,7 @@ When a controversial event is anticipated or already underway, communications te
 - Executive offices and chief communications officers
 - Reputation and trust advisory firms
 
-### What PersonaGraph Does
+### What AudienceMind Does
 
 1. The analyst uploads a scenario brief describing the anticipated or active crisis: supply-chain controversy, executive misconduct, sustainability backlash, pricing outrage, regulatory action.
 2. The platform maps the stakeholder ecosystem: critics, advocates, investigative media, regulators, competitors, consumer groups, employees, investors.
@@ -118,7 +118,7 @@ When a controversial event is anticipated or already underway, communications te
 
 ### Concrete Example
 
-A fashion brand faces allegations about labor practices in its supply chain. The analyst uploads the investigative report and the brand's draft response. PersonaGraph maps advocacy groups, investigative journalists, sustainability influencers, loyal customers, competitor brands, and institutional investors. The simulation shows advocacy groups and media amplifying the story while loyal customers initially defend the brand but shift as institutional investors signal concern. The report identifies the tipping point and recommends a response sequence that addresses investor concerns before the narrative hardens.
+A fashion brand faces allegations about labor practices in its supply chain. The analyst uploads the investigative report and the brand's draft response. AudienceMind maps advocacy groups, investigative journalists, sustainability influencers, loyal customers, competitor brands, and institutional investors. The simulation shows advocacy groups and media amplifying the story while loyal customers initially defend the brand but shift as institutional investors signal concern. The report identifies the tipping point and recommends a response sequence that addresses investor concerns before the narrative hardens.
 
 ### Why This Is Priority Three
 

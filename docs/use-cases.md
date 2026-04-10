@@ -1,8 +1,8 @@
-# PersonaGraph  - Most Valuable Use Cases
+# AudienceMind - Most Valuable Use Cases
 
-## What PersonaGraph Is
+## What AudienceMind Is
 
-PersonaGraph is a graph-backed scenario simulation workbench. It ingests source material, derives an ontology and actor graph, generates a realistic cast of personas, runs a multi-agent social simulation, produces an evidence-grounded report, and lets the analyst interrogate both the report and the simulated actors.
+AudienceMind is a graph-backed scenario simulation workbench. It ingests source material, derives an ontology and actor graph, generates a realistic cast of personas, runs a multi-agent social simulation, produces an evidence-grounded report, and lets the analyst interrogate both the report and the simulated actors.
 
 The core workflow is: **Graph -> Setup -> Simulate -> Report -> Interact**.
 
@@ -18,7 +18,7 @@ This is not a chatbot and not a dashboard. It is a scenario construction engine 
 
 **The problem:** Teams need to anticipate public reaction before committing budget to a campaign, product launch, or brand repositioning.
 
-**How PersonaGraph solves it:**
+**How AudienceMind solves it:**
 
 - Upload a campaign brief or brand strategy document.
 - The platform builds an actor graph of consumers, media, influencers, competitors, and institutional stakeholders.
@@ -36,7 +36,7 @@ This is not a chatbot and not a dashboard. It is a scenario construction engine 
 
 **The problem:** When a controversial event is anticipated or underway, teams need to understand who will amplify the story, what narratives will dominate, and where response plans will fail.
 
-**How PersonaGraph solves it:**
+**How AudienceMind solves it:**
 
 - Ingest a scenario brief describing the crisis or controversy.
 - The graph maps critics, advocates, media outlets, regulators, consumer groups, and competitors.
@@ -54,7 +54,7 @@ This is not a chatbot and not a dashboard. It is a scenario construction engine 
 
 **The problem:** Entering a new market involves anticipating how local competitors, media, regulators, cultural dynamics, and consumer segments will respond.
 
-**How PersonaGraph solves it:**
+**How AudienceMind solves it:**
 
 - Ingest research briefs covering the target market's competitive landscape, institutions, and consumer dynamics.
 - The graph captures locations, local competitors, institutions, media, and consumer segments.
@@ -71,7 +71,7 @@ This is not a chatbot and not a dashboard. It is a scenario construction engine 
 
 **The problem:** Before a CEO announcement, public statement, or leadership change, teams need to anticipate how different audiences will interpret and react to the narrative.
 
-**How PersonaGraph solves it:**
+**How AudienceMind solves it:**
 
 - The graph models media, analysts, employees, investors, critics, and advocates around the executive.
 - The simulation shows how each stakeholder group reacts to the proposed narrative.
@@ -87,7 +87,7 @@ This is not a chatbot and not a dashboard. It is a scenario construction engine 
 
 **The problem:** Shifts in distribution (DTC vs. wholesale, premium vs. off-price) and pricing affect different customer segments in conflicting ways.
 
-**How PersonaGraph solves it:**
+**How AudienceMind solves it:**
 
 - Ingest a strategy document describing the proposed channel or pricing change.
 - The graph maps shoppers, analysts, retail partners, purists, and deal-seekers.
@@ -104,7 +104,7 @@ This is not a chatbot and not a dashboard. It is a scenario construction engine 
 
 **The problem:** Analysts need to rapidly build structured, evidence-backed scenario briefs for leadership workshops, strategy reviews, or client presentations.
 
-**How PersonaGraph solves it:**
+**How AudienceMind solves it:**
 
 - The complete graph-to-report pipeline produces an inspectable, multi-section strategic brief in minutes.
 - Each stage is transparent  - the analyst can verify the graph, review the cast, inspect simulation activity, and question the report.
@@ -120,7 +120,7 @@ This is not a chatbot and not a dashboard. It is a scenario construction engine 
 
 **The problem:** Understanding how institutions, advocacy groups, critics, media, and affected populations will respond to a policy proposal or public-affairs campaign.
 
-**How PersonaGraph solves it:**
+**How AudienceMind solves it:**
 
 - The graph naturally represents institutional actors, advocacy coalitions, media, regulators, and affected communities.
 - The simulation models contested environments where narratives compete and coalitions form.

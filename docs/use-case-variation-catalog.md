@@ -1,20 +1,20 @@
-# PersonaGraph Variation Catalog
+# AudienceMind Variation Catalog
 
 ## Purpose
 
-This document is a second, independent exploration of where PersonaGraph can go.
+This document is a second, independent exploration of where AudienceMind can go.
 
 Instead of starting from a feature matrix, this version starts from:
 
 - who would use the system
 - what problem they are actually trying to solve
-- what minimal product edits would make PersonaGraph viable for that problem
+- what minimal product edits would make AudienceMind viable for that problem
 
 The goal is to identify product variations that are close enough to the current architecture to be realistic, but different enough to open new markets.
 
 ## What The Current Engine Already Gives You
 
-PersonaGraph already has a strong core loop:
+AudienceMind already has a strong core loop:
 
 1. ingest source material
 2. derive an ontology
@@ -64,7 +64,7 @@ They do not need perfect prediction. They need:
 - key supporting and opposing actors
 - a usable report before launch
 
-### What PersonaGraph Already Covers
+### What AudienceMind Already Covers
 
 - campaign prompt intake
 - actor graph creation
@@ -107,7 +107,7 @@ When a controversial event happens, teams need to understand:
 - what counter-reactions might emerge
 - where the response plan will fail
 
-### What PersonaGraph Already Covers
+### What AudienceMind Already Covers
 
 - actor ecosystem modeling
 - narrative spread through simulated actions
@@ -149,7 +149,7 @@ Teams need a structured way to anticipate how a new market may react to:
 - local competition
 - political, cultural, or pricing friction
 
-### What PersonaGraph Already Covers
+### What AudienceMind Already Covers
 
 - entity extraction from research briefs
 - geographic nodes and institutional actors
@@ -193,7 +193,7 @@ These teams want to test how an issue evolves across:
 - media
 - affected populations
 
-### What PersonaGraph Already Covers
+### What AudienceMind Already Covers
 
 - stakeholder graphing
 - simulated public reaction
@@ -236,7 +236,7 @@ Organizations struggle to predict how different internal groups will react to:
 - return-to-office decisions
 - leadership changes
 
-### What PersonaGraph Already Covers
+### What AudienceMind Already Covers
 
 - cast creation from source material
 - narrative-driven simulation
@@ -277,7 +277,7 @@ Teams need to understand how different user groups, competitors, and commentator
 - a packaging shift
 - a feature launch
 
-### What PersonaGraph Already Covers
+### What AudienceMind Already Covers
 
 - structured scenario input
 - actor simulation
@@ -320,7 +320,7 @@ They care about:
 - polish
 - reproducibility
 
-### What PersonaGraph Already Covers
+### What AudienceMind Already Covers
 
 - repeatable workflow spine
 - grounded markdown reports
@@ -358,7 +358,7 @@ This is one of the clearest monetization paths because it does not require the p
 
 These teams need to run many scenarios, compare them, and maintain a history of what was tested and what was learned.
 
-### What PersonaGraph Already Covers
+### What AudienceMind Already Covers
 
 - a structured end-to-end workflow
 - persisted state
@@ -381,7 +381,7 @@ These teams need to run many scenarios, compare them, and maintain a history of 
 
 ### Why This Matters
 
-Without these additions, PersonaGraph is primarily an app. With them, it becomes operational research infrastructure.
+Without these additions, AudienceMind is primarily an app. With them, it becomes operational research infrastructure.
 
 ## Variation 9: Investment And Competitive Narrative Monitor
 
@@ -400,7 +400,7 @@ Teams want to understand how market narratives evolve around:
 - earnings themes
 - category changes
 
-### What PersonaGraph Already Covers
+### What AudienceMind Already Covers
 
 - document-driven actor mapping
 - ecosystem modeling
@@ -441,7 +441,7 @@ Teams want a safe environment where people can explore:
 - second-order effects
 - communication strategies
 
-### What PersonaGraph Already Covers
+### What AudienceMind Already Covers
 
 - scenario construction
 - simulated actors
@@ -620,7 +620,7 @@ Unlocks:
 
 ## Final Take
 
-The best way to think about PersonaGraph is not as a single-purpose app.
+The best way to think about AudienceMind is not as a single-purpose app.
 
 It is a reusable engine for:
 
@@ -631,4 +631,4 @@ It is a reusable engine for:
 
 That engine can support several product variations without changing its identity.
 
-The strongest next step is not to add random features. It is to choose which of these product variations PersonaGraph should become first, then add the smallest capability bundle that makes that variation genuinely useful.
+The strongest next step is not to add random features. It is to choose which of these product variations AudienceMind should become first, then add the smallest capability bundle that makes that variation genuinely useful.

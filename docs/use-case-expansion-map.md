@@ -1,10 +1,10 @@
-# PersonaGraph Use-Case Expansion Map
+# AudienceMind Use-Case Expansion Map
 
 ## Purpose
 
 This document maps:
 
-- the use cases PersonaGraph already supports in its current baseline
+- the use cases AudienceMind already supports in its current baseline
 - the additional use cases that become possible if specific capabilities are added
 - the most valuable product variations the platform could evolve into
 
@@ -14,11 +14,11 @@ It is meant to help with product strategy, roadmap planning, and packaging decis
 
 - `Current baseline` means the functionality that already exists in this repository today.
 - `Unlock` means a use case that becomes commercially or operationally viable after adding one specific capability or a coherent capability bundle.
-- `Variation` means a meaningful product flavor of PersonaGraph, not just a minor feature.
+- `Variation` means a meaningful product flavor of AudienceMind, not just a minor feature.
 
-## Current Baseline: What PersonaGraph Already Does
+## Current Baseline: What AudienceMind Already Does
 
-PersonaGraph is already a graph-backed scenario simulation workbench with five linked stages:
+AudienceMind is already a graph-backed scenario simulation workbench with five linked stages:
 
 - `Graph`
 - `Setup`
@@ -72,7 +72,7 @@ Examples:
 
 Why it fits:
 
-- PersonaGraph can represent critics, advocates, media, competitors, and consumer cohorts in the same graph
+- AudienceMind can represent critics, advocates, media, competitors, and consumer cohorts in the same graph
 - the simulation can test how narratives spread across multiple actor types
 - the report layer can surface risk clusters and strategic implications
 
@@ -154,7 +154,7 @@ Unlocked use cases:
 
 Why it matters:
 
-- today PersonaGraph is strongest as a scenario lab
+- today AudienceMind is strongest as a scenario lab
 - connectors would turn it into both a lab and a live monitoring system
 
 ### B. Multi-Language Ingestion And Simulation
@@ -196,7 +196,7 @@ Unlocked use cases:
 Why it matters:
 
 - current runs are strong for bounded scenarios
-- memory would make PersonaGraph useful for ongoing intelligence programs
+- memory would make AudienceMind useful for ongoing intelligence programs
 
 ### D. Counterfactual Intervention Engine
 
@@ -279,7 +279,7 @@ Unlocked use cases:
 
 Why it matters:
 
-- today PersonaGraph is strongest as a single-team analyst workbench
+- today AudienceMind is strongest as a single-team analyst workbench
 - collaboration features are required for enterprise adoption, not just convenience
 
 ### H. Traceable Export And Delivery Packets
@@ -322,7 +322,7 @@ Unlocked use cases:
 Why it matters:
 
 - this is critical for scaling the platform responsibly
-- it is especially useful if PersonaGraph becomes a productized service
+- it is especially useful if AudienceMind becomes a productized service
 
 ### J. API-First Automation Layer
 
@@ -343,7 +343,7 @@ Unlocked use cases:
 
 Why it matters:
 
-- this is how PersonaGraph becomes infrastructure for other systems
+- this is how AudienceMind becomes infrastructure for other systems
 
 ## Product Variations Worth Considering
 
@@ -398,7 +398,7 @@ Needed additions:
 
 Why this is attractive:
 
-- it broadens PersonaGraph beyond social-campaign analysis into strategy intelligence
+- it broadens AudienceMind beyond social-campaign analysis into strategy intelligence
 
 ### 3. Public Affairs And Policy Simulator
 
@@ -447,7 +447,7 @@ Needed additions:
 
 Why this is attractive:
 
-- this positions PersonaGraph as a durable internal capability, not just a one-off app
+- this positions AudienceMind as a durable internal capability, not just a one-off app
 
 ### 5. Client Deliverable Engine
 
@@ -503,7 +503,7 @@ If the goal is commercial leverage with minimal architectural risk, the best add
    This makes the product easier to adopt and easier to sell.
 
 3. Real-time and external connectors  
-   This expands PersonaGraph from scenario lab to live intelligence tool.
+   This expands AudienceMind from scenario lab to live intelligence tool.
 
 4. Collaboration and governance  
    This is required for serious enterprise deployment.
@@ -549,7 +549,7 @@ Build:
 
 Reason:
 
-- this turns PersonaGraph into an ongoing intelligence system
+- this turns AudienceMind into an ongoing intelligence system
 
 ### Phase 3: Enterprise Readiness
 
@@ -576,11 +576,11 @@ Build:
 
 Reason:
 
-- this is where PersonaGraph evolves from analysis tool to decision platform
+- this is where AudienceMind evolves from analysis tool to decision platform
 
 ## Summary
 
-PersonaGraph already supports a credible set of use cases around graph-backed scenario simulation, actor modeling, report generation, and persona interaction.
+AudienceMind already supports a credible set of use cases around graph-backed scenario simulation, actor modeling, report generation, and persona interaction.
 
 The most important expansion principle is:
 
