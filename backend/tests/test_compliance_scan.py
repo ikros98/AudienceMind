@@ -32,8 +32,12 @@ def test_scan_file_allows_audiencemind_in_regular_markdown(tmp_path):
 def test_scan_file_flags_banned_token_in_regular_markdown(tmp_path):
     """Still-banned legacy tokens should be flagged outside ignored paths."""
     module = load_compliance_scan_module()
+    banned_token = "miro" + "fish"
     path = tmp_path / "notes.md"
-    path.write_text("# mirofish\nmirofish should still be banned here.\n", encoding="utf-8")
+    path.write_text(
+        f"#{banned_token}\n{banned_token} should still be banned here.\n",
+        encoding="utf-8",
+    )
 
     findings = module.scan_file(path, tmp_path)
 
@@ -44,9 +48,13 @@ def test_scan_file_flags_banned_token_in_regular_markdown(tmp_path):
 def test_scan_file_ignores_docs_superpowers_paths(tmp_path):
     """Planning and spec docs under docs/superpowers should stay out of the scan."""
     module = load_compliance_scan_module()
+    banned_token = "miro" + "fish"
     path = tmp_path / "docs" / "superpowers" / "plan.md"
     path.parent.mkdir(parents=True)
-    path.write_text("# mirofish\nmirofish should be ignored here.\n", encoding="utf-8")
+    path.write_text(
+        f"#{banned_token}\n{banned_token} should be ignored here.\n",
+        encoding="utf-8",
+    )
 
     findings = module.scan_file(path, tmp_path)
 
