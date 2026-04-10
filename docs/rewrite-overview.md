@@ -1,7 +1,7 @@
-# PersonaGraph Architecture Overview
+# AudienceMind Architecture Overview
 
 ## Scope
-The repository root is the English-only implementation path for PersonaGraph. It contains the active product codebase, current branding, and compliance controls.
+The repository root is the English-only implementation path for AudienceMind. It contains the active product codebase, current branding, and compliance controls.
 
 ## Core Principles
 - Keep any archived or support material outside the active root app.
@@ -35,10 +35,10 @@ The repository root is the English-only implementation path for PersonaGraph. It
 - Queue claims are now atomic in the database so API and worker processes can share the same workflow tables safely.
 - The frontend now uses a reusable split-workbench stage layout with `Graph`, `Split`, and `Workbench` view modes across the analyst workflow.
 - The compatibility layer now uses native graph, simulation, and reporting behavior by default while keeping FastAPI as the only client-facing backend for the workflow UI.
-- Native workflow runs now persist posts, comments, environment state, graph deltas, interviews, and report sections inside PersonaGraph-owned runtime storage.
+- Native workflow runs now persist posts, comments, environment state, graph deltas, interviews, and report sections inside AudienceMind-owned runtime storage.
 - Native reports now ground their summaries in graph statistics, runtime posts/comments, active-agent selection, and interview evidence rather than using only action-count summaries.
-- The native PersonaGraph runtime is the supported path for graph, simulation, report, and interaction workflows.
-- Native simulations launch a PersonaGraph-owned OASIS worker process that writes authoritative runtime artifacts, including action logs, environment state, post/comment snapshots, worker logs, and filesystem IPC messages for live interviews and environment shutdown.
+- The native AudienceMind runtime is the supported path for graph, simulation, report, and interaction workflows.
+- Native simulations launch an AudienceMind-owned OASIS worker process that writes authoritative runtime artifacts, including action logs, environment state, post/comment snapshots, worker logs, and filesystem IPC messages for live interviews and environment shutdown.
 - Backend tests still use a deterministic in-process simulation path when `PERSONAGRAPH_LLM_PROVIDER=test`, so test-mode speed and reproducibility are preserved without changing the production runtime path.
 - Non-test preparation uses structured graph-grounded persona and config enrichment, including richer trust lenses, narrative roles, platform behavior, agent pacing, seeded posts, scheduled events, and platform tuning, while preserving deterministic fallbacks for tests and provider failures.
 - Brand-reaction scenarios now select a social-simulation ontology and cast shape first, biasing toward roles such as consumer cohorts, fashion media, influencers, executives, institutional actors, and competitors while keeping products, events, and locations as supporting evidence.

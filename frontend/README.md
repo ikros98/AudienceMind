@@ -1,6 +1,6 @@
-# PersonaGraph Frontend
+# AudienceMind Frontend
 
-React + Vite frontend for the active PersonaGraph workflow:
+React + Vite frontend for the active AudienceMind workflow:
 
 - `Graph`
 - `Setup`

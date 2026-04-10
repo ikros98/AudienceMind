@@ -1,10 +1,10 @@
-# PersonaGraph QA Test Plan
+# AudienceMind QA Test Plan
 
-This plan is for a QA engineer who needs to validate the full PersonaGraph platform quickly with a small scenario that runs comfortably on a local OpenAI-compatible or Ollama-compatible setup.
+This plan is for a QA engineer who needs to validate the full AudienceMind platform quickly with a small scenario that runs comfortably on a local OpenAI-compatible or Ollama-compatible setup.
 
 ## Goal
 
-Validate that the current PersonaGraph stack works end to end:
+Validate that the current AudienceMind stack works end to end:
 
 - backend starts and serves the API
 - frontend renders all workflow stages
@@ -235,7 +235,7 @@ The QA engineer should explicitly check these on top of the workflow steps:
 - forms are usable at desktop width and at a narrower laptop-width viewport
 - buttons disable while background actions are in flight
 - empty states are readable and consistent
-- no Chinese or Malay text appears anywhere in the tested PersonaGraph flow
+- no Chinese or Malay text appears anywhere in the tested AudienceMind flow
 
 ## Required API Checks
 

@@ -1,8 +1,8 @@
-# PersonaGraph Backend
+# AudienceMind Backend
 
-FastAPI service for the new PersonaGraph application.
+FastAPI service for the new AudienceMind application.
 
-The React workflow frontend primarily talks to the backend through the compatibility surface under `/api/...`, which is implemented in `app/routes/legacy_compat.py` but backed by the current native PersonaGraph runtime.
+The React workflow frontend primarily talks to the backend through the compatibility surface under `/api/`, which is implemented in `app/routes/legacy_compat.py` but backed by the current native AudienceMind runtime.
 
 ## Current API Surface
 

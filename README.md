@@ -1,6 +1,6 @@
-# PersonaGraph
+# AudienceMind
 
-PersonaGraph is the active English-only clean-room implementation for graph-backed scenario simulation, analyst workbench flows, and report generation.
+AudienceMind is the active English-only clean-room implementation for graph-backed scenario simulation, analyst workbench flows, and report generation.
 
 ## What Is Here
 
@@ -59,7 +59,7 @@ The FastAPI backend exposes the compatibility surface under `/api/...` for the f
 
 - use `frontend` to exercise the split-stage `Graph -> Setup -> Simulate -> Report -> Interact` flow against the clean-room backend
 - the default local backend target for that app is `http://localhost:8020`
-- the compatibility layer now runs natively on the FastAPI backend by default: graph build/read stays on Graphiti while setup, simulation, posts/comments, interviews, report generation, and report chat use PersonaGraph runtime storage under `backend/data`
+- the compatibility layer now runs natively on the FastAPI backend by default: graph build/read stays on Graphiti while setup, simulation, posts/comments, interviews, report generation, and report chat use AudienceMind runtime storage under `backend/data`
 - graph data exposed through the workflow API now comes from the live Graphiti graph when available, with a cached baseline payload preserved for delta rendering in the simulation view
 - Graphiti ingestion now normalizes ontology labels into Graphiti-safe identifiers at write time while preserving readable labels in the glass payload, so real graph builds do not fall back to placeholder scaffolds
 - ontology generation for the workflow flow is now domain-specific instead of the older generic placeholder schema, and graph build automatically regenerates stored generic ontologies before materialization
@@ -68,8 +68,8 @@ The FastAPI backend exposes the compatibility surface under `/api/...` for the f
 - the current local chat stack is wired to OpenRouter `qwen/qwen3.6-plus:free`, while embeddings can still stay on a separate dedicated endpoint; if you switch Graphiti to a slower provider path, expect more batches and lower ingest throughput, while faster dedicated inference can still support larger episodes and fewer batches
 - local Graphiti development now defaults to a higher `GRAPHITI_TIMEOUT_SECONDS` because large brand briefs on local models regularly exceed the earlier 300-second client budget
 - generic Graphiti nodes that are obviously countries or cities now normalize to `Location` on readback, so the glass graph no longer exposes raw `Entity` labels for those nodes
-- the native PersonaGraph runtime is now the supported execution path for `frontend`
-- non-test simulation runs now execute inside a PersonaGraph-owned OASIS worker process backed by `camel-oasis` and `camel-ai`
+- the native AudienceMind runtime is now the supported execution path for `frontend`
+- non-test simulation runs now execute inside an AudienceMind-owned OASIS worker process backed by `camel-oasis` and `camel-ai`
 - backend test runs still use a deterministic in-process simulation path when `PERSONAGRAPH_LLM_PROVIDER=test` so tests remain fast and reproducible
 - graph-grounded preparation persists `prepared_entities.json` and `preparation_manifest.json` alongside generated profiles and config
 - each native glass simulation persists runtime artifacts such as `state.json`, `env.json`, platform action logs, post and comment snapshots, worker logs, interview IPC files, and scheduled-event activity under `backend/data/glass/simulations/<simulation_id>/`

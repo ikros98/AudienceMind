@@ -1,7 +1,7 @@
-# PersonaGraph Compliance Notes
+# AudienceMind Compliance Notes
 
 ## What Must Not Enter The New App
-- Retired product names and retired org or community references that do not belong to PersonaGraph.
+- Retired product names and retired org or community references that do not belong to AudienceMind.
 - Non-English copy, comments, filenames, or assets in the new app paths.
 - Reused screenshots or branded imagery from the legacy project.
 
@@ -22,7 +22,7 @@ Use `scripts/sanitize_runtime_artifacts.py` when you want to clean stored graph,
 
 ## Expected Workflow
 - Run the scanner after adding or renaming files.
-- Run the scanner before committing new PersonaGraph implementation work.
+- Run the scanner before committing new AudienceMind implementation work.
 - Treat any scanner finding as a blocker until the content is removed or explicitly approved.
 - Keep all new implementation work inside the active root app unless an explicit support file is needed.
 - Preserve a clean-room boundary: do not copy legacy assets, prompts, comments, or user-facing strings into the new app.
